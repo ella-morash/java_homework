@@ -24,7 +24,36 @@ public class Main {
         String[] names = {"Jack", "Nick"};
         int[][] grades = { { 3,4,2}, { 5,5,5,4} };
         findHighestGpa(names,grades);
+
+        //sorting an array
+
+        Random rand = new Random();
+        int[] numbers = new int[10];
+        int[] numbers1 = new int[5];
+
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = rand.nextInt((99-10)+10);
+        }
+        for (int i = 0; i < numbers1.length; i++) {
+            numbers1[i] = rand.nextInt((99-10)+10);
+        }
+
+        System.out.println("Before:");
+        printArray(numbers);
+        System.out.println();
+        printArray(numbers1);
+
+        quickSort(numbers, 0, numbers.length - 1);
+        quickSort(numbers1, 0, numbers1.length - 1);
+
+        System.out.println("\nAfter:");
+        printArray(numbers);
+        System.out.println();
+        printArray(numbers1);
     }
+
+
+
     /*Implement the method that calculates the sum of integer array.
     You should not use any loops. Use the recursion. */
 
@@ -113,9 +142,6 @@ public class Main {
             String currentName = names[i];
             int j = i - 1;
 
-            /* Move elements of arr[0..i-1], that are
-               greater than key, to one position ahead
-               of their current position */
             while (j >= 0 && gpa[j] > current) {
                 gpa[j + 1] = gpa[j];
                 names[j + 1] = names[j];
@@ -131,4 +157,61 @@ public class Main {
 
         }
     }
+
+    public static void printArray(int[] numbers){
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.println(numbers[i]);
+
+        }
+    }
+
+
+
+    /* Given two big arrays of integers from 10 to 99 (it’s a result of some of test).
+    You should implement the method that mutually sorts these arrays. You could use any algorithm you know
+    Example {13,78,12,18,12,36} {14,18,11,70} -> {11,12,12,13,14,18} {18,36,70,78} */
+
+
+
+   public static void quickSort(int [] numbers, int lowIndex, int highIndex ) {
+
+       if(lowIndex>=highIndex) {
+           return;
+       }
+
+       //1.choose pivot
+       int pivot = numbers[highIndex];
+
+       //2. partition: move elements that low then pivot to the left and that high then pivot to the right
+       int leftPointer = lowIndex;
+       int rightPointer = highIndex;
+
+       while (leftPointer<rightPointer) {
+           while (numbers[leftPointer]<=pivot && leftPointer<rightPointer) {
+               leftPointer++;
+           }
+           while (numbers[rightPointer]>=pivot && leftPointer<rightPointer) {
+               rightPointer--;
+           }
+           swap(numbers,leftPointer,rightPointer);
+
+       }
+       swap(numbers,leftPointer,highIndex);
+
+       //3. recursively sort all the values to the left og the pivot and all the values to the right of the pivot
+       quickSort(numbers,lowIndex,leftPointer-1);
+       quickSort(numbers,rightPointer + 1,highIndex);
+    }
+
+
+    public static void swap(int[] arr,int index1,int index2) {
+        int temp = arr[index1];
+        arr[index1] = arr[index2];
+        arr[index2] = temp;
+    }
+
+
 }
+
+
+
