@@ -17,7 +17,11 @@ public class GameGuessNumber {
 
     private int readNumberOfAttempts(){
         System.out.println("How many attempts would you like to use?");
+
         int attempts = scanner.nextInt();
+        while (attempts<=0){
+            System.out.println("Impossible number of attempts");
+        }
         System.out.printf("Alright %d attempts",attempts);
         return attempts;
 
@@ -31,6 +35,8 @@ public class GameGuessNumber {
 
     private void guessNumber(int attempts){
         int number = secret.nextInt(10);
+        int attemptsLeft = attempts;
+
         System.out.println();
         do{
 
@@ -41,6 +47,7 @@ public class GameGuessNumber {
                 break;
             }else {
                 System.out.println("Wrong! Try again...");
+                attemptsLeft--;
                 if (number > enteredNum){
                     System.out.println("Its bigger then " + enteredNum);
                 }else{
@@ -48,7 +55,7 @@ public class GameGuessNumber {
                 }
             }
 
-        }while(attempts>0);
+        }while(attemptsLeft>0);
 
     }
 }
