@@ -23,17 +23,26 @@ public class Main {
         Programmer fl1 = new FullstackProgrammer("Sveta",1100);
 
         Manager mg = new Manager("Alex",1300,200);
+        Manager mg1 = new Manager("Igor",1300,200);
+        Manager mg2 = new Manager("Serega",1300,200);
 
-        mg.addEmployeeToTeam(mg,0);
-        mg.addEmployeeToTeam(p1,1);
-        mg.addEmployeeToTeam(p2,2);
-        mg.addEmployeeToTeam(q1,3);
-        mg.addEmployeeToTeam(q2,4);
-        mg.addEmployeeToTeam(b1,5);
-        mg.addEmployeeToTeam(f1,6);
-        mg.addEmployeeToTeam(fl1,7);
+        mg.addEmployeeToTeam(mg);
+        mg.addEmployeeToTeam(p1);
+        mg.addEmployeeToTeam(p2);
+        mg.addEmployeeToTeam(q1);
+        mg.addEmployeeToTeam(q2);
+        mg.addEmployeeToTeam(b1);
+        mg.addEmployeeToTeam(f1);
+        mg.addEmployeeToTeam(fl1);
+        mg.addEmployeeToTeam(mg1);
+        mg.addEmployeeToTeam(mg2);
+
+
+
 
         System.out.println(Arrays.toString(mg.getTeam()));
+
+
 
     }
 }

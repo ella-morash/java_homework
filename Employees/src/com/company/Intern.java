@@ -5,4 +5,9 @@ public class Intern extends Employee{
 
         super(name, salary);
     }
+
+    @Override
+    public void doWork() {
+        System.out.println("I am learning only");
+    }
 }

@@ -1,6 +1,7 @@
 package com.company;
 
 public class BackEndProgrammer extends Programmer{
+
     public BackEndProgrammer(String name, double salary) {
         super(name, salary);
     }
@@ -12,6 +13,7 @@ public class BackEndProgrammer extends Programmer{
 
     @Override
     public String toString() {
+
         return super.toString() + " Backend Programmer";
     }
 }
