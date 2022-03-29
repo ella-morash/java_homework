@@ -5,7 +5,6 @@ import java.util.Arrays;
 public abstract class Vehicle {
     private String number;
     private int year;
-    private Vehicle[] vehicles;
 
     public Vehicle(String number, int year) {
         this.number = number;
@@ -20,9 +19,6 @@ public abstract class Vehicle {
         return year;
     }
 
-    public Vehicle[] getVehicles() {
-        return vehicles;
-    }
 
     @Override
     public abstract String toString();
