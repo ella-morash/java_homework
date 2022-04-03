@@ -26,21 +26,30 @@ public class Main {
         Manager mg1 = new Manager("Igor",1300,200);
         Manager mg2 = new Manager("Serega",1300,200);
 
-        mg.addEmployeeToTeam(mg);
-        mg.addEmployeeToTeam(p1);
-        mg.addEmployeeToTeam(p2);
-        mg.addEmployeeToTeam(q1);
-        mg.addEmployeeToTeam(q2);
-        mg.addEmployeeToTeam(b1);
-        mg.addEmployeeToTeam(f1);
-        mg.addEmployeeToTeam(fl1);
-        mg.addEmployeeToTeam(mg1);
-        mg.addEmployeeToTeam(mg2);
+
+
+        EmployeeTeam team = new EmployeeTeam();
+        team.addEmployeeToTeam(p1);
+        team.addEmployeeToTeam(p2);
+        team.addEmployeeToTeam(q1);
+        team.addEmployeeToTeam(q2);
+        team.addEmployeeToTeam(b1);
+        team.addEmployeeToTeam(f1);
+
+        System.out.println(team.toString());
+        System.out.println();
+
+        System.out.println(team.removeEmployeeFromTeam(0));
+        System.out.println();
+        System.out.println("After Remove Method");
+
+
+        System.out.println(team.toString());
 
 
 
 
-        System.out.println(Arrays.toString(mg.getTeam()));
+       // System.out.println(Arrays.toString(mg.getTeam()));
 
 
 
