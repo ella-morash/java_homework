@@ -57,6 +57,15 @@ public class EmployeeTeam {
 
         return eToRemove;
     }
+    // when indexes does not matter
+
+    public Employee removeEmployeeFromTeam1(int index) {
+        Employee temp = team [index];
+        team [index] = null;
+
+        return temp;
+
+    }
 
 
     public void printTeam() {
