@@ -1,11 +1,14 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+
 
 public class EmployeeTeam {
     private Employee[] team;
     private int capacity = 8;
     private int currentInx = 0;
+
 
 
     @Override
@@ -31,6 +34,21 @@ public class EmployeeTeam {
         }
 
     }
+
+    public int findEmployee(Employee e) {
+
+        for (int i = 0; i < team.length; i++) {
+            if (team[i]!=null){
+                if (e.hashCode() == team[i].hashCode() && team[i].equals(e) ) {
+                    return i;
+            }
+            }
+        }
+        System.out.println("There is no such employee in team!");
+        return -1;
+    }
+
+
 
     public Employee removeEmployeeFromTeam(int index) {
         Employee eToRemove = team[index];

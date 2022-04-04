@@ -36,20 +36,20 @@ public class Main {
         team.addEmployeeToTeam(b1);
         team.addEmployeeToTeam(f1);
 
-        System.out.println(team.toString());
-        System.out.println();
+        System.out.println(team);
 
-        System.out.println(team.removeEmployeeFromTeam(0));
-        System.out.println();
-        System.out.println("After Remove Method");
+        System.out.println(team.findEmployee(p2));
+//        System.out.println();
+//
+//        System.out.println(team.removeEmployeeFromTeam(0));
+//        System.out.println();
+//        System.out.println("After Remove Method");
+//
+//
+//        System.out.println(team.toString());
 
 
-        System.out.println(team.toString());
 
-
-
-
-       // System.out.println(Arrays.toString(mg.getTeam()));
 
 
 
