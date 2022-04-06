@@ -26,19 +26,27 @@ public class Main {
         Manager mg1 = new Manager("Igor",1300,200);
         Manager mg2 = new Manager("Serega",1300,200);
 
+        BackEndProgrammer p100 = new BackEndProgrammer("Nick",1500);
 
 
-        EmployeeTeam team = new EmployeeTeam();
-        team.addEmployeeToTeam(p1);
-        team.addEmployeeToTeam(p2);
-        team.addEmployeeToTeam(q1);
-        team.addEmployeeToTeam(q2);
-        team.addEmployeeToTeam(b1);
-        team.addEmployeeToTeam(f1);
 
-        System.out.println(team);
+        EmployeeTeam team = new EmployeeTeam(100);
+        mg.addToTeam(p1);
+        mg.addToTeam(p2);
+        mg.addToTeam(q1);
+        mg.addToTeam(q2);
+        mg.addToTeam(b1);
+        mg.addToTeam(f1);
 
-        System.out.println(team.findEmployee(p2));
+
+        mg.printTeam();
+        System.out.println("-----------------------------------------");
+
+        //mg.removeFromTeam(0);
+        mg.removeFromTeam(p100);
+
+        mg.printTeam();
+        //System.out.println(team.findEmployee(p2));
 //        System.out.println();
 //
 //        System.out.println(team.removeEmployeeFromTeam(0));

@@ -6,6 +6,7 @@ import java.util.Objects;
 public class Manager extends Employee {
 
     private double bonus;
+    EmployeeTeam team;
 
 
 
@@ -56,5 +57,26 @@ public class Manager extends Employee {
     public void doWork() {
         System.out.println("I am a manager " + getName() + ". I do a lot!");
         ;
+    }
+
+    public void addToTeam(Employee e){
+        if(e!=null) {
+            if (team == null) {
+                team = new EmployeeTeam();
+            }
+            team.add(e);
+        }
+    }
+
+    public void removeFromTeam(int index) {
+        team.remove(index);
+    }
+
+    public void removeFromTeam(Employee e) {
+        team.remove(e);
+    }
+
+    public void printTeam(){
+        team.print();
     }
 }
