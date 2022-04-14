@@ -10,6 +10,8 @@ public class Main {
 
 	    Programmer p1=new Programmer("Ivan",1000);
 
+        Programmer p3=new Programmer("Ivan",1200);
+
 	    Programmer p2=new Programmer("Nick",1500);
 
 	    QAEngineer q1=new QAEngineer("Lena",1200);
@@ -37,15 +39,34 @@ public class Main {
         mg.addToTeam(q2);
         mg.addToTeam(b1);
         mg.addToTeam(f1);
+        mg.addToTeam(p3);
 
 
-        mg.printTeam();
+
+        //System.out.println(mg.countEmployees());
+        //System.out.println(mg.getEmployee(0));
+        //System.out.println(mg.getEmployee(10));
+
+        Employee[] toRemove = {p1,q2,f1};
+        Employee[] toAdd = {fl1,mg};
+
+
+
+
+        //mg.printTeam();
         System.out.println("-----------------------------------------");
-
+        System.out.println(Arrays.toString(mg.getSpecificEmployees("Programmer")));
+        System.out.println("-----------------------------------------");
+        System.out.println(Arrays.toString(mg.getSpecificEmployees("QAEngineer")));
+        //System.out.println(Arrays.toString(mg.getSpecificEmployees("Engineer")));
+        //System.out.println(Arrays.toString(mg.findAllEmployees("Ivan")));
         //mg.removeFromTeam(0);
-        mg.removeFromTeam(p100);
+        //mg.addAllEmployees(toAdd);
+        //mg.removeFromTeam("Igor");
+        //mg.removeAllEmployees(toRemove);
+        //System.out.println(mg.countEmployees());
 
-        mg.printTeam();
+        //mg.printTeam();
         //System.out.println(team.findEmployee(p2));
 //        System.out.println();
 //

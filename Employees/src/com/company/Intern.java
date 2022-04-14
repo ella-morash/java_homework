@@ -10,4 +10,9 @@ public class Intern extends Employee{
     public void doWork() {
         System.out.println("I am learning only");
     }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
+    }
 }

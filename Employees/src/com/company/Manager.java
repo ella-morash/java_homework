@@ -67,16 +67,45 @@ public class Manager extends Employee {
             team.add(e);
         }
     }
+    public int countEmployees () {
+        return team.size();
+    }
+    public Employee getEmployee (int index) {
+        return team.get(index);
+    }
 
     public void removeFromTeam(int index) {
         team.remove(index);
     }
+    public void removeFromTeam(String name) {
+        team.remove(name);
+    }
 
-    public void removeFromTeam(Employee e) {
+    public void removeAllEmployees (Employee[] employees) {
+        team.removeAll(employees);
+    }
+    public void addAllEmployees (Employee[] employees) {
+        team.addAll(employees);
+    }
+
+    public void removeFromTeam(Employee e)
+    {
         team.remove(e);
+    }
+    public Employee[] findAllEmployees(String name) {
+        return team.findAll(name);
+    }
+    public Employee[] getSpecificEmployees(String job) {
+        return team.findSpecificEmployees(job);
     }
 
     public void printTeam(){
+
         team.print();
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }
