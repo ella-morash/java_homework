@@ -29,6 +29,7 @@ public class EmployeeTeam {
 
     //The int size() method that returns how many Employees in the team
     public int size() {
+
         return currentInx;
     }
 
@@ -76,25 +77,26 @@ public class EmployeeTeam {
 
     //The method that returns the new EmployeeTeam with all employees with the given name from this team .
     public Employee[] findAll(String name) {
-        int capacity = 10;
+        Employee[] newTeam = new Employee[currentInx];
         int index = 0;
-        Employee[] newTeam = new Employee[capacity];
+
         for (int i = 0; i < currentInx; i++) {
-            if (team[i].getName().equals(name)) {
-                newTeam[index++] = team[i];
-            }
-            if (index >= capacity) {
-                newTeam = Arrays.copyOf(newTeam, capacity * 2);
+            if (team[i] != null) {
+                if (team[i].getName().equals(name)) {
+                    newTeam[index++] = team[i];
+                }
             }
         }
-        return newTeam;
+
+        return Arrays.copyOf(newTeam,index);
     }
 
 
     //Implement the method that returns the EmployeeTeam with all programmers
     // or all QA Engineers from this team
     public Employee[] findSpecificEmployees(String jobTitle) {
-        Employee[] subTeam = new Employee[this.team.length];
+        Employee[] subTeam = new Employee[currentInx];
+
 
 
         switch (jobTitle) {
@@ -103,23 +105,29 @@ public class EmployeeTeam {
                 int i = 0;
 
                 for (Employee employee : this.team) {
-                    if (employee instanceof Programmer) {
-                        subTeam[i++] = employee;
+                    if (employee != null) {
+                        if (employee instanceof Programmer) {
+                            subTeam[i++] = employee;
 
+                        }
                     }
+
                 }
-                return subTeam;
+                return Arrays.copyOf(subTeam,i);
             case "QAEngineer":
                 int j = 0;
 
                 for (Employee employee : this.team) {
-                    if (employee instanceof QAEngineer) {
-                        subTeam[j++] = employee;
+                    if (employee != null) {
+                        if (employee instanceof QAEngineer) {
+                            subTeam[j++] = employee;
 
+                        }
                     }
 
+
                 }
-                return subTeam;
+                return Arrays.copyOf(subTeam,j);
             default:
                 throw new ClassCastException();
         }

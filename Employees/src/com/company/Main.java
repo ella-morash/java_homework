@@ -59,7 +59,7 @@ public class Main {
         System.out.println("-----------------------------------------");
         System.out.println(Arrays.toString(mg.getSpecificEmployees("QAEngineer")));
         //System.out.println(Arrays.toString(mg.getSpecificEmployees("Engineer")));
-        //System.out.println(Arrays.toString(mg.findAllEmployees("Ivan")));
+        System.out.println(Arrays.toString(mg.findAllEmployees("Ivan")));
         //mg.removeFromTeam(0);
         //mg.addAllEmployees(toAdd);
         //mg.removeFromTeam("Igor");
