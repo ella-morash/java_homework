@@ -75,6 +75,7 @@ public class Manager extends Employee {
     }
 
     public void removeFromTeam(int index) {
+
         team.remove(index);
     }
     public void removeFromTeam(String name) {
@@ -82,6 +83,8 @@ public class Manager extends Employee {
     }
 
     public void removeAllEmployees (Employee[] employees) {
+
+
         team.removeAll(employees);
     }
     public void addAllEmployees (Employee[] employees) {
@@ -92,11 +95,12 @@ public class Manager extends Employee {
     {
         team.remove(e);
     }
-    public Employee[] findAllEmployees(String name) {
-        return team.findAll(name);
+    public EmployeeTeam findAllEmployees(String name) {
+
+        return team.findAllByName(name);
     }
-    public Employee[] getSpecificEmployees(String job) {
-        return team.findSpecificEmployees(job);
+    public EmployeeTeam getSpecificEmployees(String job) {
+        return team.findAllBySpeciality(job);
     }
 
     public void printTeam(){
@@ -106,6 +110,7 @@ public class Manager extends Employee {
 
     @Override
     public int compareTo(Object o) {
+
         return 0;
     }
 }

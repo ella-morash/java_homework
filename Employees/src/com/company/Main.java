@@ -55,11 +55,10 @@ public class Main {
 
         //mg.printTeam();
         System.out.println("-----------------------------------------");
-        System.out.println(Arrays.toString(mg.getSpecificEmployees("Programmer")));
+        //System.out.println(Arrays.toString(mg.getSpecificEmployees("Programmer")));
         System.out.println("-----------------------------------------");
-        System.out.println(Arrays.toString(mg.getSpecificEmployees("QAEngineer")));
-        //System.out.println(Arrays.toString(mg.getSpecificEmployees("Engineer")));
-        System.out.println(Arrays.toString(mg.findAllEmployees("Ivan")));
+        //System.out.println(Arrays.toString(mg.getSpecificEmployees("QAEngineer")));
+
         //mg.removeFromTeam(0);
         //mg.addAllEmployees(toAdd);
         //mg.removeFromTeam("Igor");

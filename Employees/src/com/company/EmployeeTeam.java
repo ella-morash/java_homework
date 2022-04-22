@@ -1,7 +1,7 @@
 package com.company;
 
 import java.util.Arrays;
-import java.util.List;
+
 
 
 public class EmployeeTeam {
@@ -27,6 +27,10 @@ public class EmployeeTeam {
                 '}';
     }
 
+    public Employee[] getTeam() {
+        return team;
+    }
+
     //The int size() method that returns how many Employees in the team
     public int size() {
 
@@ -38,6 +42,7 @@ public class EmployeeTeam {
     public void trimToSize() {
         if (currentInx < capacity) {
             team = Arrays.copyOf(team, currentInx);
+            capacity=currentInx;
         }
     }
 
@@ -65,72 +70,58 @@ public class EmployeeTeam {
 
     //Adding several employees to a team at a time (addAll).
     // As previous It should be possible to set the list by array or by EmployeeTeam
-    public boolean addAll(Employee[] employeesToAdd) {
-        if (employeesToAdd.length == 0) return false;
-        for (Employee employee : employeesToAdd) {
-            add(employee);
-
+    public boolean addAll(Employee[] employees){
+        int size=size();
+        if (employees==null) return false;
+        int newCapacity=currentInx+employees.length+10;
+        if (newCapacity<capacity){
+            increaseToSize(newCapacity);
         }
+        for (int i = 0; i < employees.length ; i++) {
+            if (employees[i]!=null){
+                add(employees[i]);
+            }
+        }
+        return size==size();
+    }
 
-        return true;
+    public boolean addAll(EmployeeTeam employees){
+        if(employees!=null){
+            return addAll(employees.getTeam());
+        } else {
+            return false;
+        }
     }
 
     //The method that returns the new EmployeeTeam with all employees with the given name from this team .
-    public Employee[] findAll(String name) {
-        Employee[] newTeam = new Employee[currentInx];
-        int index = 0;
-
+    public EmployeeTeam findAllByName(String name){
+        EmployeeTeam employeeTeam=new EmployeeTeam();
+        if(name==null) return employeeTeam;
         for (int i = 0; i < currentInx; i++) {
-            if (team[i] != null) {
-                if (team[i].getName().equals(name)) {
-                    newTeam[index++] = team[i];
-                }
+            if(team[i].getName().equals(name)){
+                employeeTeam.add(team[i]);
             }
         }
-
-        return Arrays.copyOf(newTeam,index);
+        return employeeTeam;
     }
 
 
     //Implement the method that returns the EmployeeTeam with all programmers
     // or all QA Engineers from this team
-    public Employee[] findSpecificEmployees(String jobTitle) {
-        Employee[] subTeam = new Employee[currentInx];
-
-
-
-        switch (jobTitle) {
-
-            case "Programmer":
-                int i = 0;
-
-                for (Employee employee : this.team) {
-                    if (employee != null) {
-                        if (employee instanceof Programmer) {
-                            subTeam[i++] = employee;
-
-                        }
-                    }
-
-                }
-                return Arrays.copyOf(subTeam,i);
-            case "QAEngineer":
-                int j = 0;
-
-                for (Employee employee : this.team) {
-                    if (employee != null) {
-                        if (employee instanceof QAEngineer) {
-                            subTeam[j++] = employee;
-
-                        }
-                    }
-
-
-                }
-                return Arrays.copyOf(subTeam,j);
-            default:
-                throw new ClassCastException();
+    public EmployeeTeam findAllBySpeciality(String name) {
+        EmployeeTeam employeeTeam = new EmployeeTeam();
+        if (name == null) return employeeTeam;
+        for (int i = 0; i < currentInx; i++) {
+            switch (name) {
+                case "programmer":
+                    if (team[i] instanceof Programmer) add(team[i]);
+                case "qa":
+                    if (team[i] instanceof QAEngineer) add(team[i]);
+            }
         }
+
+        return employeeTeam;
+
     }
 
 
@@ -184,22 +175,36 @@ public class EmployeeTeam {
     //Removal of several employees from the team at once (removeAll)
     // It should be possible to use an array of Employee or EmployeeTeam to set the list of removed workers
 
-    public boolean removeAll(Employee[] teamToRemove) {
-        int len = teamToRemove.length;
-        outerFor:
-        for (int i = 0; i < len; i++) {
-            for (int j = 0; j < currentInx; j++) {
-                if (team[j].hashCode() == teamToRemove[i].hashCode() && team[j].equals(teamToRemove[i])) {
-                    remove(team[j]);
-                    remove(teamToRemove[i]);
-                    continue outerFor;
+    public boolean removeAll(Employee[] employees){
+            if(employees==null) return false;
+            int size=size();
+            for (int i = 0; i < employees.length ; i++) {
+                if(employees[i]!=null) {
+                    remove(employees[i]);
                 }
             }
+            return size!=size();
         }
 
-        if (len == 0) return true;
-        return false;
+    public boolean removeAll(EmployeeTeam employees){
+        if(employees==null) return false;
+        int size=size();
+        for (int i = 0; i < employees.size() ; i++) {
+            Employee e=get(i);
+            if(e!=null) {
+                remove(e);
+            }
+        }
+        return size!=size();
     }
+
+    private void increaseToSize(int newCapacity){
+        if(newCapacity>capacity){
+            team= Arrays.copyOf(team,newCapacity);
+            capacity=newCapacity;
+        }
+    }
+
 
 
     public void print() {
