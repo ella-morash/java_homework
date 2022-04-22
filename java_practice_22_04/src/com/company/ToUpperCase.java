@@ -6,8 +6,11 @@ public class ToUpperCase extends Mutation{
 
     @Override
     public String transform(String word) {
-        return word.toUpperCase();
+        if (word.length() == 3) {
+            return word.toUpperCase();
+        }
+
+        return word;
+
     }
-
-
 }

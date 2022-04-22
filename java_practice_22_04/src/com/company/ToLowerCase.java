@@ -7,6 +7,11 @@ public class ToLowerCase extends Mutation{
 
     @Override
     public String transform(String word) {
-        return word.toLowerCase();
+        if (word.length()==4){
+            return word.toLowerCase();
+        }
+
+        return word;
+
     }
 }
