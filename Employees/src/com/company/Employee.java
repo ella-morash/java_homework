@@ -1,16 +1,28 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public abstract class Employee implements Comparable {
     private String name;
     private double salary;
+    private ArrayList<Task> tasks = new ArrayList<>();
 
 
     public Employee(String name, double salary) {
         this.name = name;
         this.salary = salary;
 
+
+    }
+
+    public ArrayList<Task> getTasks() {
+        return tasks;
+    }
+
+    public void doTask(Task task) {
+        this.tasks.add(task);
+        task.assignTasks(this);
     }
 
     @Override

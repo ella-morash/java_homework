@@ -50,6 +50,17 @@ public class Main {
         Employee[] toRemove = {p1,q2,f1};
         Employee[] toAdd = {fl1,mg};
 
+        Task task1 = new Task(1,"BACKLOG","implement logic");
+        Task task2 = new Task(2,"BACKLOG","implement classes");
+
+        b1.doTask(task1);
+        p1.doTask(task1);
+        b1.doTask(task2);
+        p1.doTask(task2);
+
+        //System.out.println(task1.getEmployees());
+        System.out.println(b1.getTasks());
+
 
 
 
@@ -59,23 +70,7 @@ public class Main {
         System.out.println("-----------------------------------------");
         //System.out.println(Arrays.toString(mg.getSpecificEmployees("QAEngineer")));
 
-        //mg.removeFromTeam(0);
-        //mg.addAllEmployees(toAdd);
-        //mg.removeFromTeam("Igor");
-        //mg.removeAllEmployees(toRemove);
-        //System.out.println(mg.countEmployees());
-
-        //mg.printTeam();
-        //System.out.println(team.findEmployee(p2));
-//        System.out.println();
-//
-//        System.out.println(team.removeEmployeeFromTeam(0));
-//        System.out.println();
-//        System.out.println("After Remove Method");
-//
-//
-//        System.out.println(team.toString());
-
+        //mg.removeFromTeam(0)
 
 
 
