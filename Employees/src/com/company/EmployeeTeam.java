@@ -60,12 +60,15 @@ public class EmployeeTeam {
             team = new Employee[capacity];
             currentInx = 0;
         }
-        team[currentInx++] = employee;
+        if (employee!=null) {
+            team[currentInx++] = employee;
 
-        if (currentInx >= capacity) {
+            if (currentInx >= capacity) {
 
-            team = Arrays.copyOf(team, capacity * 2);
+                team = Arrays.copyOf(team, capacity * 2);
+            }
         }
+
 
     }
 
@@ -83,7 +86,7 @@ public class EmployeeTeam {
                 add(employees[i]);
             }
         }
-        return size==size();
+        return size!=size();
     }
 
     public boolean addAll(EmployeeTeam employees){
