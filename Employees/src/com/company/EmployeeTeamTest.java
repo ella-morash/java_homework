@@ -106,4 +106,20 @@ class EmployeeTeamTest {
         Assertions.assertFalse(team.removeAll(toRemove));
 
     }
+
+    @Test
+    void removeByNameNormalCaseSizeEqualSizeBefore() {
+        int sizeNow = team.size();
+        team.add(new Programmer("Alex",1200));
+        team.remove("Alex");
+        Assertions.assertEquals(sizeNow,team.size());
+    }
+
+    @Test
+    void removeByNameNormalCaseCheckIfRemovesEmplNotInTeam() {
+        team.add(new Programmer("Alex",1200));
+        team.remove("Alex");
+        int indexOfEmployee = team.find(new Programmer("Alex",1200));
+        Assertions.assertEquals(-1 ,indexOfEmployee);
+    }
 }
