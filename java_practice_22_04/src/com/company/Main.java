@@ -8,11 +8,11 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        String words =  "aaa BBBB dEfxc";
-        System.out.println(transformString(words,new ToUpperCase()));
-
-        String word = "abbbcc";
-        System.out.println(findMaxLength(word));
+//        String words =  "aaa BBBB dEfxc";
+//        System.out.println(transformString(words,new ToUpperCase()));
+//
+//        String word = "abbbcc";
+//        System.out.println(findMaxLength(word));
 
     }
 
@@ -37,10 +37,8 @@ public class Main {
         StringBuilder bd = new StringBuilder();
         for (String s:strings) {
 
-                bd.append(command.transform(s)).append(' ');
-
+                bd.append(command.transform(s)).append(" ");
         }
-
-        return bd.toString();
+        return bd.toString().trim();
     }
 }
