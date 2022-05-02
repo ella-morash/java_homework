@@ -11,8 +11,5 @@ public class Intern extends Employee{
         System.out.println("I am learning only");
     }
 
-    @Override
-    public int compareTo(Object o) {
-        return 0;
-    }
+
 }

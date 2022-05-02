@@ -3,10 +3,10 @@ package com.company;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public abstract class Employee implements Comparable {
+public abstract class Employee implements Comparable<Employee> {
     private String name;
     private double salary;
-    private ArrayList<Task> tasks = new ArrayList<>();
+
 
 
     public Employee(String name, double salary) {
@@ -16,14 +16,14 @@ public abstract class Employee implements Comparable {
 
     }
 
-    public ArrayList<Task> getTasks() {
-        return tasks;
+    @Override
+    public int compareTo(Employee employee) {
+        return this.name.compareTo(employee.name);
     }
 
-    public void doTask(Task task) {
-        this.tasks.add(task);
-        task.assignTasks(this);
-    }
+
+
+
 
     @Override
     public boolean equals(Object o) {

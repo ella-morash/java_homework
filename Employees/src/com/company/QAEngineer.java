@@ -17,8 +17,5 @@ public class QAEngineer extends Employee{
         return super.toString() + " QAEngineer";
     }
 
-    @Override
-    public int compareTo(Object o) {
-        return 0;
-    }
+
 }

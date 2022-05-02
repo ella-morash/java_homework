@@ -6,7 +6,7 @@ public class Task {
     private int id;
     private String status;
     private String description;
-    private ArrayList<Employee> employees = new ArrayList<>();
+    //private ArrayList<Employee> employees = new ArrayList<>();
 
     public Task(int id, String status, String description) {
         this.id = id;
@@ -20,7 +20,6 @@ public class Task {
                 "id=" + id +
                 ", status='" + status + '\'' +
                 ", description='" + description + '\'' +
-                ", employees=" + employees +
                 '}';
     }
 
@@ -36,12 +35,6 @@ public class Task {
         return description;
     }
 
-    public ArrayList<Employee> getEmployees() {
-        return employees;
-    }
 
-    public void assignTasks(Employee e) {
-        this.employees.add(e);
-    }
 }
 

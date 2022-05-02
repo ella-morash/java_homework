@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 
 
-public class EmployeeTeam {
+public class EmployeeTeam  {
     private Employee[] team;
     private int capacity = 8;
     private int currentInx = 0;
@@ -19,14 +19,10 @@ public class EmployeeTeam {
 
     }
 
-    @Override
-    public String toString() {
-        return "EmployeeTeam{" +
-                "team=" + Arrays.toString(team) +
-                ", capacity=" + capacity +
-                ", currentInx=" + currentInx +
-                '}';
-    }
+   public void sortTeam() {
+        trimToSize();
+        Arrays.sort(team);
+   }
 
     public Employee[] getTeam() {
         return team;
@@ -42,6 +38,7 @@ public class EmployeeTeam {
     // Implement the trimToSize() method that trims the capacity of the array to be the real current size.
     public void trimToSize() {
         if (currentInx < capacity) {
+
             team = Arrays.copyOf(team, currentInx);
             capacity=currentInx;
         }

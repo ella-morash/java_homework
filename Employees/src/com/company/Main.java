@@ -32,7 +32,7 @@ public class Main {
 
 
 
-        EmployeeTeam team = new EmployeeTeam(100);
+        EmployeeTeam team = new EmployeeTeam();
         mg.addToTeam(p1);
         mg.addToTeam(p2);
         mg.addToTeam(q1);
@@ -42,35 +42,43 @@ public class Main {
         mg.addToTeam(p3);
 
 
+        mg.printTeam();
+        System.out.println("-----------------------------------------");
+        mg.sortEmployees();
 
-        //System.out.println(mg.countEmployees());
-        //System.out.println(mg.getEmployee(0));
-        //System.out.println(mg.getEmployee(10));
+        mg.printTeam();
 
-        Employee[] toRemove = {p1,q2,f1};
-        Employee[] toAdd = {fl1,mg};
+
+
 
         Task task1 = new Task(1,"BACKLOG","implement logic");
         Task task2 = new Task(2,"BACKLOG","implement classes");
+        Task task3 = new Task(3,"IN PROGRESS","implement classes");
+        Task task4 = new Task(4,"DONE","implement classes");
 
-        b1.doTask(task1);
-        p1.doTask(task1);
-        b1.doTask(task2);
-        p1.doTask(task2);
+        TaskAssignment taskAssignment = new TaskAssignment(task1,p1);
+        TaskAssignment taskAssignment1 = new TaskAssignment(task1,p2);
+        TaskAssignment taskAssignment2 = new TaskAssignment(task2,p2);
+        TaskAssignment taskAssignment3 = new TaskAssignment(task1,p2);
+        TaskAssignment taskAssignment4 = new TaskAssignment(task3,p1);
 
-        //System.out.println(task1.getEmployees());
-        System.out.println(b1.getTasks());
+       TaskAssignmentLoader loader = new TaskAssignmentLoader();
+
+       loader.addToMap(taskAssignment);
+       loader.addToMap(taskAssignment1);
+       loader.addToMap(taskAssignment2);
+       loader.addToMap(taskAssignment3);
+       loader.addToMap(taskAssignment4);
+
+        System.out.println(loader.getEmployeeTaskMap());
 
 
 
 
-        //mg.printTeam();
-        System.out.println("-----------------------------------------");
-        //System.out.println(Arrays.toString(mg.getSpecificEmployees("Programmer")));
-        System.out.println("-----------------------------------------");
-        //System.out.println(Arrays.toString(mg.getSpecificEmployees("QAEngineer")));
 
-        //mg.removeFromTeam(0)
+
+
+
 
 
 

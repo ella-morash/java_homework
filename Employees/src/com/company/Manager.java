@@ -99,6 +99,9 @@ public class Manager extends Employee {
 
         return team.findAllByName(name);
     }
+    public void sortEmployees() {
+        team.sortTeam();
+    }
     public EmployeeTeam getSpecificEmployees(String job) {
         return team.findAllBySpeciality(job);
     }
@@ -108,9 +111,5 @@ public class Manager extends Employee {
         team.print();
     }
 
-    @Override
-    public int compareTo(Object o) {
 
-        return 0;
-    }
 }

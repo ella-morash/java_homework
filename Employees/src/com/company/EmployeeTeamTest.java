@@ -16,7 +16,14 @@ class EmployeeTeamTest {
     }
 
     @Test
-    void sizeOfEmployeeTeam() {
+    void sizeFewEmplAddedIntoEmptyArray() {
+        this.team.add(new Programmer("Gera",10));
+        this.team.add(new Programmer("Gera",10));
+        Assertions.assertEquals(2,team.size());
+
+    }
+    @Test
+    void sizeOneEmplAddedIntoEmptyArray() {
         this.team.add(new Programmer("Gera",10));
         Assertions.assertEquals(1,team.size());
 
@@ -28,7 +35,7 @@ class EmployeeTeamTest {
     }
 
     @Test
-    void getIfException() {
+    void getEmployeeIfIndexNotCorrect() {
         this.team.add(new Programmer("Gera",10));
         Assertions.assertThrows(IndexOutOfBoundsException.class,() -> this.team.get(2));
     }
@@ -36,7 +43,7 @@ class EmployeeTeamTest {
     @Test
     void getIfNormalCase() {
         this.team.add(new Programmer("Gera",10));
-        Assertions.assertEquals(new Programmer("Gera",10),team.remove(0));
+        Assertions.assertEquals(new Programmer("Gera",10),team.get(0));
     }
 
     @Test
@@ -65,7 +72,7 @@ class EmployeeTeamTest {
         int previousSize = team.size();
         team.add(new Programmer("Alex",1200));
         team.remove(new Programmer("Alex",1200));
-        Assertions.assertEquals(0,previousSize);
+        Assertions.assertEquals(previousSize,team.size());
     }
 
     @Test
@@ -116,7 +123,7 @@ class EmployeeTeamTest {
     }
 
     @Test
-    void removeByNameNormalCaseCheckIfRemovesEmplNotInTeam() {
+    void removeByNameNormalCaseCheckIfRemovedEmplNotInTeam() {
         team.add(new Programmer("Alex",1200));
         team.remove("Alex");
         int indexOfEmployee = team.find(new Programmer("Alex",1200));
