@@ -102,6 +102,9 @@ public class Manager extends Employee {
     public void sortEmployees() {
         team.sortTeam();
     }
+    public void insertEmployee(Employee e, int index) {
+        team.insert(e,index);
+    }
     public EmployeeTeam getSpecificEmployees(String job) {
         return team.findAllBySpeciality(job);
     }

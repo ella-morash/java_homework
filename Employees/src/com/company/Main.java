@@ -43,8 +43,9 @@ public class Main {
 
 
         mg.printTeam();
+        mg.insertEmployee(fl1,3);
         System.out.println("-----------------------------------------");
-        mg.sortEmployees();
+        //mg.sortEmployees();
 
         mg.printTeam();
 

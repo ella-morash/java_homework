@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 
@@ -172,6 +173,25 @@ public class EmployeeTeam  {
         }
 
         return eToRemove;
+    }
+
+    //insert employee by index
+    public void insert(Employee employee, int index) {
+
+        if (currentInx > 0 && index <= currentInx) {
+            Employee[] newTeam = new Employee [team.length + 1];
+            System.arraycopy(team, 0, newTeam, 0,index);
+            newTeam[index] = employee;
+            System.arraycopy(team, index , newTeam, index + 1, currentInx - index);
+            team = newTeam;
+
+
+        } else {
+            throw new IndexOutOfBoundsException();
+        }
+
+
+
     }
     //Removal of several employees from the team at once (removeAll)
     // It should be possible to use an array of Employee or EmployeeTeam to set the list of removed workers
