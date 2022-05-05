@@ -176,7 +176,7 @@ public class EmployeeTeam  {
     }
 
     //insert employee by index
-    public void insert(Employee employee, int index) {
+    public boolean insert(Employee employee, int index) {
 
         if (currentInx > 0 && index <= currentInx) {
             Employee[] newTeam = new Employee [team.length + 1];
@@ -184,10 +184,11 @@ public class EmployeeTeam  {
             newTeam[index] = employee;
             System.arraycopy(team, index , newTeam, index + 1, currentInx - index);
             team = newTeam;
+            return true;
 
 
         } else {
-            throw new IndexOutOfBoundsException();
+            return false;
         }
 
 

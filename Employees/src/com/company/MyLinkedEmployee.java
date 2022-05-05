@@ -1,12 +1,14 @@
 package com.company;
 
+import java.util.Comparator;
+
 public class MyLinkedEmployee {
     private Node head;
     private Node tail;
     private int length;
 
 
-    private static class Node {
+    public static class Node {
         Employee employee;
         Node next;
         Node prev;
@@ -37,7 +39,7 @@ public class MyLinkedEmployee {
     }
 
     public Node get(int index) {
-        if (index < 0 || index >= length) return null;
+        if (index < 0 || index >= length) throw new IndexOutOfBoundsException();
         Node temp = head;
         if (index < length / 2) {
             for (int i = 0; i < index; i++) {
@@ -50,6 +52,9 @@ public class MyLinkedEmployee {
             }
         }
         return temp;
+    }
+    public Employee getEmployee(int index) {
+        return get(index).employee;
     }
 
     public boolean insert(Employee employee, int index) {
@@ -147,6 +152,16 @@ public class MyLinkedEmployee {
         return temp;
 
     }
+    public Employee removeEmployee(int index) {
+        return remove(index).employee;
+    }
+    public Node remove(Employee employee) {
+        int index = find(employee);
+        return remove(index);
+    }
+    public Employee removeEmployee(Employee employee) {
+        return remove(employee).employee;
+    }
 
     public boolean set(Employee employee, int index) {
 
@@ -172,5 +187,33 @@ public class MyLinkedEmployee {
             }
         }
         return -1;
+    }
+    public void sortList(Comparator<Employee> comparator)
+    {
+        Node current = head;
+        Node index = null;
+        Employee temp;
+
+        if (head == null) {
+            return;
+        }
+        else {
+            while (current != null) {
+
+                index = current.next;
+
+                while (index != null) {
+
+                    if (comparator.compare(current.employee,index.employee)>0) {
+                        temp = current.employee;
+                        current.employee = index.employee;
+                        index.employee = temp;
+                    }
+
+                    index = index.next;
+                }
+                current = current.next;
+            }
+        }
     }
 }
