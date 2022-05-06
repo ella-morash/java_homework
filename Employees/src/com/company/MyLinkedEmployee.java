@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.Comparator;
+import java.util.List;
 
 public class MyLinkedEmployee {
     private Node head;
@@ -39,7 +40,7 @@ public class MyLinkedEmployee {
     }
 
     public Node get(int index) {
-        if (index < 0 || index >= length) throw new IndexOutOfBoundsException();
+        if (index < 0 || index > length) throw new IndexOutOfBoundsException();
         Node temp = head;
         if (index < length / 2) {
             for (int i = 0; i < index; i++) {
@@ -139,16 +140,23 @@ public class MyLinkedEmployee {
     }
 
     public Node remove(int index) {
-        if (index < 0 || index >= length) return null;
-        if (index == 0) removeFromHead();
-        if (index == length) removeFromTail();
+        if (index < 0 || index > length) throw new IndexOutOfBoundsException();
         Node temp = get(index);
-        temp.next.prev = temp.prev;
-        temp.prev.next = temp.next;
-        temp.next = null;
-        temp.prev = null;
 
-        length--;
+        if (index == 0) {
+            removeFromHead();
+        }
+        else if (index == length - 1){
+            removeFromTail();
+        } else {
+
+            temp.next.prev = temp.prev;
+            temp.prev.next = temp.next;
+            temp.next = null;
+            temp.prev = null;
+            length--;
+        }
+
         return temp;
 
     }
@@ -164,7 +172,7 @@ public class MyLinkedEmployee {
     }
 
     public boolean set(Employee employee, int index) {
-
+        if (index < 0 || index > length) return false;
         Node temp = get(index);
         if (temp != null) {
             temp.employee = employee;
@@ -187,6 +195,17 @@ public class MyLinkedEmployee {
             }
         }
         return -1;
+    }
+    public Employee[] toArray () {
+        Employee[] employees = new Employee[length];
+        Node temp = head;
+        int index = 0;
+        while (temp!=null) {
+            employees[index] = temp.employee;
+            temp = temp.next;
+            index++;
+        }
+        return employees;
     }
     public void sortList(Comparator<Employee> comparator)
     {
@@ -215,5 +234,6 @@ public class MyLinkedEmployee {
                 current = current.next;
             }
         }
+
     }
 }
