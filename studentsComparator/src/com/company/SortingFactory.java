@@ -6,7 +6,8 @@ import java.util.List;
 
 public class SortingFactory {
 
-    public static void sortStudents(String answer,List<Students> students) {
+
+    public static void sortStudents(String answer,List<Students> students) throws IllegalArgumentException {
         switch (answer){
             case "name":
                 Collections.sort(students,new ComparatorByName());
@@ -16,8 +17,10 @@ public class SortingFactory {
                 break;
             case "birthday":
                 Collections.sort(students,new ComparatorByBirthday());
+                break;
             default:
-                System.out.println("There is no such a way to sort students");
+                throw new IllegalArgumentException();
+
         }
     }
 }
