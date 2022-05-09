@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
 
 
@@ -23,12 +23,13 @@ class SortingFactoryTest {
 
         List<Students> students = new ArrayList<>();
         students.add(student1);
-        students.add(student3);
         students.add(student2);
+        students.add(student3);
         Object[] studentsArray = students.toArray();
+        Object[] expected = {student1,student3,student2};
         SortingFactory.sortStudents(answer,students);
         Object[] sortedArray = students.toArray();
-        Assertions.assertArrayEquals(studentsArray,sortedArray);
+        Assertions.assertArrayEquals(expected,sortedArray);
 
     }
     @Test
@@ -39,13 +40,14 @@ class SortingFactoryTest {
         Students student3 = new Students("Dima",1998,8.2);
 
         List<Students> students = new ArrayList<>();
-        students.add(student2);
         students.add(student1);
+        students.add(student2);
         students.add(student3);
         Object[] studentsArray = students.toArray();
+        Object[] expected = {student2,student1,student3};
         SortingFactory.sortStudents(answer,students);
         Object[] sortedArray = students.toArray();
-        Assertions.assertArrayEquals(studentsArray,sortedArray);
+        Assertions.assertArrayEquals(expected,sortedArray);
 
     }
     @Test
@@ -57,12 +59,13 @@ class SortingFactoryTest {
 
         List<Students> students = new ArrayList<>();
         students.add(student1);
-        students.add(student3);
         students.add(student2);
+        students.add(student3);
         Object[] studentsArray = students.toArray();
+        Object[] expected = {student1,student3,student2};
         SortingFactory.sortStudents(answer,students);
         Object[] sortedArray = students.toArray();
-        Assertions.assertArrayEquals(studentsArray,sortedArray);
+        Assertions.assertArrayEquals(expected,sortedArray);
 
     }
     @Test
