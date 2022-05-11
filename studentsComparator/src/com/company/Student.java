@@ -1,11 +1,14 @@
 package com.company;
 
-public class Students {
+public class Student implements TaskManager {
+
+
     private String name;
     private int yearOfBirthday;
     private double gpa;
 
-    public Students(String name, int yearOfBirthday, double gpa) {
+    public Student(String name, int yearOfBirthday, double gpa) {
+
         this.name = name;
         this.yearOfBirthday = yearOfBirthday;
         this.gpa = gpa;
@@ -31,4 +34,18 @@ public class Students {
     public double getGpa() {
         return gpa;
     }
+
+    @Override
+    public void notifyTeacher(Task task,Teacher teacher) {
+        teacher.taskIsDone(task);
+
+
+    }
+
+    @Override
+    public void doTask(Task task) {
+        System.out.println(task);
+    }
+
+
 }
