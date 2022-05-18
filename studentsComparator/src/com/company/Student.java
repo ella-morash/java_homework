@@ -1,7 +1,7 @@
 package com.company;
 
-public class Student implements TaskManager {
 
+public class Student implements IStudent {
 
     private String name;
     private int yearOfBirthday;
@@ -36,7 +36,7 @@ public class Student implements TaskManager {
     }
 
     @Override
-    public void notifyTeacher(Task task,Teacher teacher) {
+    public void notifyTeacher(Task task,ITeacher teacher) {
         teacher.taskIsDone(task);
 
 

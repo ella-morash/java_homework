@@ -7,7 +7,7 @@ import java.util.List;
 public class SortingFactory {
 
 
-    public static void sortStudents(String answer,List<Students> students) throws IllegalArgumentException {
+    public static void sortStudents(String answer,List<Student> students) throws IllegalArgumentException {
         switch (answer){
             case "name":
                 Collections.sort(students,new ComparatorByName());

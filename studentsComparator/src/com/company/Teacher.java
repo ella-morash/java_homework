@@ -9,7 +9,7 @@ import java.util.List;
 public class Teacher implements ITeacher{
     private static Teacher INSTANCE;
     private String name;
-    private List<Student> studentList = new ArrayList<>();
+    private List<IStudent> studentList = new ArrayList<>();
 
 
     private Teacher(String name) {
@@ -31,17 +31,18 @@ public class Teacher implements ITeacher{
     }
 
     @Override
-    public void add(Student student) {
-        studentList.add(student);
+    public void add(IStudent iStudent) {
+        studentList.add( iStudent);
 
     }
 
 
     @Override
-    public void remove(Student student) {
-        studentList.remove(student);
+    public void remove(IStudent iStudent) {
+        studentList.remove(iStudent);
 
     }
+
 
     @Override
     public void notifyStudent(Task task) {
@@ -51,6 +52,7 @@ public class Teacher implements ITeacher{
 
     @Override
     public void taskIsDone(Task task) {
+
         System.out.println(task+" is completed");
     }
 }
