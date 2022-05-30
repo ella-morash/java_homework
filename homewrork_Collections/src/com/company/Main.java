@@ -9,12 +9,27 @@ public class Main {
         List<String> list1 = Arrays.asList("word1", "word2", "word3", "word4");
         List<String> list2 = Arrays.asList("word3", "word4", "word1", "word2");
         List<String> list3 = Arrays.asList("word4", "word3", "word2", "word1");
-        System.out.println(isCyclic(list1,list3));
+        //System.out.println(isCyclic(list1,list3));
+        List<Character> chars = Arrays.asList('a','b','c','c','a','a','a','f');
+        System.out.println(removeAdjDuplicates(chars));
     }
     //Given a List . Implement a method that will remove all adjacent identical characters, leaving only one.
     //For example: {a,,b,c,c,b,a,a,a,f} -> {a,,b,c,a,f}
-    public static List<Character> removeDuplicates(List<Character> chars) {
-        return chars.stream().collect(Collectors.toSet()).stream().toList();
+    public static List<Character> removeAdjDuplicates(List<Character> chars) {
+        Stack<Character> stack = new Stack<>();
+        stack.push(chars.get(0));
+        for (int i = 1; i < chars.size(); i++) {
+            char adjacent = stack.peek();
+            if (chars.get(i).equals(adjacent)){
+                continue;
+            } else {
+                stack.push(chars.get(i));
+            }
+
+        }
+
+
+        return stack.stream().toList();
     }
     //Given a List of words. Implements the method that return
     // the Map where key is a word and the value is how many times the word appears in the list.
