@@ -1,7 +1,9 @@
 package com.company;
 
+import com.company.homewrok_08_06.Person;
+
 import java.util.*;
-import java.util.stream.Collectors;
+
 
 public class Main {
 
@@ -119,7 +121,7 @@ public class Main {
     //{word1, word2, word3, word4} , { word3, word4, word1, word2} -> true
     //{word1, word2, word3, word4} , { word4, word3, word2, word1} -> false
 
-    // tome O(n),space O(n)
+    // time O(n),space O(n)
     public static boolean isCyclic(List<String> list1,List<String> list2) {
         if (list1.size()!=list2.size()) return false;
 

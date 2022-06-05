@@ -1,4 +1,4 @@
-package com.company;
+package com.company.homewrok_08_06;
 
 import java.util.Objects;
 
@@ -42,6 +42,7 @@ public class Person implements Comparable<Person>{
 
     @Override
     public int compareTo(Person o) {
+
         return this.id - o.id;
     }
 }
