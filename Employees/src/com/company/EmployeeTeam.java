@@ -2,11 +2,11 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 
 
-
-public class EmployeeTeam  {
-    private Employee[] team;
+public class EmployeeTeam<T>  implements Iterable<T>{
+    private Object[] team;
     private int capacity = 8;
     private int currentInx = 0;
 
@@ -25,7 +25,8 @@ public class EmployeeTeam  {
         Arrays.sort(team);
    }
 
-    public Employee[] getTeam() {
+    public Object[] getTeam() {
+
         return team;
     }
 
@@ -46,16 +47,16 @@ public class EmployeeTeam  {
     }
 
     //The Employee get(int index) method that return the Employee with the given index
-    public Employee get(int index) {
+    public T get(int index) {
         if (currentInx > 0 && index <= currentInx) {
-            return team[index];
+            return (T) team[index];
         }
         throw new IndexOutOfBoundsException();
     }
 
-    public void add(Employee employee) {
+    public void add(T employee) {
         if (team == null) {
-            team = new Employee[capacity];
+            team = new Object[capacity];
             currentInx = 0;
         }
         if (employee!=null) {
@@ -72,7 +73,7 @@ public class EmployeeTeam  {
 
     //Adding several employees to a team at a time (addAll).
     // As previous It should be possible to set the list by array or by EmployeeTeam
-    public boolean addAll(Employee[] employees){
+    public boolean addAll(T[] employees){
         int size=size();
         if (employees==null) return false;
         int newCapacity=currentInx+employees.length+10;
@@ -87,47 +88,47 @@ public class EmployeeTeam  {
         return size!=size();
     }
 
-    public boolean addAll(EmployeeTeam employees){
+    public boolean addAll(EmployeeTeam<T> employees){
         if(employees!=null){
-            return addAll(employees.getTeam());
+            return addAll((T[]) employees.getTeam());
         } else {
             return false;
         }
     }
 
     //The method that returns the new EmployeeTeam with all employees with the given name from this team .
-    public EmployeeTeam findAllByName(String name){
-        EmployeeTeam employeeTeam=new EmployeeTeam();
-        if(name==null) return employeeTeam;
-        for (int i = 0; i < currentInx; i++) {
-            if(team[i].getName().equals(name)){
-                employeeTeam.add(team[i]);
-            }
-        }
-        return employeeTeam;
-    }
+//    public EmployeeTeam findAllByName(String name){
+//        EmployeeTeam employeeTeam=new EmployeeTeam();
+//        if(name==null) return employeeTeam;
+//        for (int i = 0; i < currentInx; i++) {
+//            if(team[i].getName().equals(name)){
+//                employeeTeam.add(team[i]);
+//            }
+//        }
+//        return employeeTeam;
+//    }
 
 
     //Implement the method that returns the EmployeeTeam with all programmers
     // or all QA Engineers from this team
-    public EmployeeTeam findAllBySpeciality(String name) {
-        EmployeeTeam employeeTeam = new EmployeeTeam();
-        if (name == null) return employeeTeam;
-        for (int i = 0; i < currentInx; i++) {
-            switch (name) {
-                case "programmer":
-                    if (team[i] instanceof Programmer) add(team[i]);
-                case "qa":
-                    if (team[i] instanceof QAEngineer) add(team[i]);
-            }
-        }
+//    public EmployeeTeam findAllBySpeciality(String name) {
+//        EmployeeTeam employeeTeam = new EmployeeTeam();
+//        if (name == null) return employeeTeam;
+//        for (int i = 0; i < currentInx; i++) {
+//            switch (name) {
+//                case "programmer":
+//                    if (team[i] instanceof Programmer) add((T) team[i]);
+//                case "qa":
+//                    if (team[i] instanceof QAEngineer) add((T) team[i]);
+//            }
+//        }
+//
+//        return employeeTeam;
+//
+//    }
 
-        return employeeTeam;
 
-    }
-
-
-    public int find(Employee e) {
+    public int find(T e) {
 
         for (int i = 0; i < currentInx; i++) {
             if (team[i] != null) {
@@ -140,7 +141,7 @@ public class EmployeeTeam  {
         return -1;
     }
 
-    public void remove(Employee e) {
+    public void remove(T e) {
         int index = find(e);
         if (index != -1) {
             remove(index);
@@ -149,23 +150,23 @@ public class EmployeeTeam  {
     }
 
     // The remove (String name) method that remove Employees by the name
-    public void remove(String name) {
-        boolean found = false;
-        for (int i = 0; i < currentInx; i++) {
-            if (team[i].getName().equals(name)) {
-                remove(i);
-                found = true;
-                break;
-            }
-        }
-        if (!found) {
-            System.out.println("No such employee in team");
-        }
+//    public void remove(String name) {
+//        boolean found = false;
+//        for (int i = 0; i < currentInx; i++) {
+//            if (team[i].getName().equals(name)) {
+//                remove(i);
+//                found = true;
+//                break;
+//            }
+//        }
+//        if (!found) {
+//            System.out.println("No such employee in team");
+//        }
+//
+//    }
 
-    }
-
-    public Employee remove(int index) {
-        Employee eToRemove = team[index];
+    public T remove(int index) {
+        T eToRemove = (T) team[index];
         if (currentInx > 0 && index <= currentInx) {
 
             System.arraycopy(team, index + 1, team, index, team.length - 1 - index);
@@ -176,10 +177,10 @@ public class EmployeeTeam  {
     }
 
     //insert employee by index
-    public boolean insert(Employee employee, int index) {
+    public boolean insert(T employee, int index) {
 
         if (currentInx > 0 && index <= currentInx) {
-            Employee[] newTeam = new Employee [team.length + 1];
+            T[] newTeam = (T[]) new Object [team.length + 1];
             System.arraycopy(team, 0, newTeam, 0,index);
             newTeam[index] = employee;
             System.arraycopy(team, index , newTeam, index + 1, currentInx - index);
@@ -197,7 +198,7 @@ public class EmployeeTeam  {
     //Removal of several employees from the team at once (removeAll)
     // It should be possible to use an array of Employee or EmployeeTeam to set the list of removed workers
 
-    public boolean removeAll(Employee[] employees){
+    public boolean removeAll(T[] employees){
             if(employees==null) return false;
             int size=size();
             for (int i = 0; i < employees.length ; i++) {
@@ -212,9 +213,9 @@ public class EmployeeTeam  {
         if(employees==null) return false;
         int size=size();
         for (int i = 0; i < employees.size() ; i++) {
-            Employee e=get(i);
+            T e= (T) get(i);
             if(e!=null) {
-                remove(e);
+                remove((T) e);
             }
         }
         return size!=size();
@@ -232,6 +233,24 @@ public class EmployeeTeam  {
     public void print() {
         for (int i = 0; i < currentInx; i++) {
             System.out.println(i + ": " + team[i] + " ");
+        }
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new TeamArrayIterator();
+    }
+
+    class TeamArrayIterator implements Iterator<T> {
+        private int index = 0;
+        @Override
+        public boolean hasNext() {
+            return index<size();
+        }
+
+        @Override
+        public T next() {
+            return get(index++);
         }
     }
 }
