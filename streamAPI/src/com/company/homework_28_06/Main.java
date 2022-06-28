@@ -1,5 +1,7 @@
 package com.company.homework_28_06;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -33,14 +35,24 @@ public class Main {
     /* 2.   Есть два класса Group {String title, List<Student>}, Student{String name, List<Double> payments}.
     Необходимо написать метод, который вернет сумму всех платежей, т.е. общий доход.   */
 
-    public static Double getTheWholeSum(List<Group> groups) {
+    public static double getTheWholeSum(List<Group> groups) {
         if ( groups == null || groups.isEmpty() ) {
-            return null;
+            return 0;
         }
 
-        return   getAllStudents(groups).stream()
+        var sum =   getAllStudents(groups).stream()
                                        .flatMap(student -> student.getPayments().stream())
                                        .reduce(.0, Double::sum);
+        return round(sum,1);
+    }
+
+    private static double round (double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = BigDecimal.valueOf(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+
+        return bd.doubleValue();
     }
 
 
